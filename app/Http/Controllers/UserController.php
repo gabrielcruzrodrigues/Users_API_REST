@@ -2,25 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Exceptions\DatabaseExeption;
-use App\Exceptions\UserAlreadyExistsException;
 use App\Exceptions\UserNotFound;
 use App\Http\Requests\UserFormRequest;
 use App\Models\User;
-use App\Services\UserService;
+use App\Services\UserServiceInterface;
 use Exception;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    protected $userService;
-
-    public function __construct(UserService $userService)
-    {
-        $this->userService = $userService; 
-    }
+    public function __construct(
+        protected UserServiceInterface $userService
+    ){}
 
     public function index() : JsonResponse
     {

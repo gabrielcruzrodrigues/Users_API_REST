@@ -1,17 +1,17 @@
 <?php
 
-namespace app\Services;
+namespace App\Services;
 
 use App\Exceptions\DatabaseExeption;
 use App\Exceptions\UserAlreadyExistsException;
 use App\Http\Requests\UserFormRequest;
 use App\Models\User;
+use App\Services\UserServiceInterface;
 use Exception;
 use Illuminate\Database\QueryException;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class UserService 
+class UserService implements UserServiceInterface
 {
      public function GetAll()
      {    
